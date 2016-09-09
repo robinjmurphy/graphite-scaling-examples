@@ -1,6 +1,6 @@
 {
   graphitePort: 2003,
-  graphiteHost: "graphite",
+  graphiteHost: "relay",
   port: 8125,
   backends: ["./backends/graphite"],
   graphite: {
