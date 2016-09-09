@@ -1,16 +1,19 @@
-# graphite-docker
+# graphite-scaling-example
 
-> A Docker Compose project for a multi-instance Graphite setup
+This project is an example of scaling Graphite with a single carbon relay node and two carbon cache nodes using Docker Compose.
+
+* The carbon relay node receives metrics from StatsD and, using Graphite's `consistent-hashing` method, shards metrics between the two backend cache nodes
+* The carbon cache nodes operate independently and persists metrics in Whisper files
+
+> See Chapter 8 of [Monitoring with Graphite](http://shop.oreilly.com/product/0636920035794.do) for a great walkthrough of scaling out Graphite
 
 ## Usage
 
-To rebuild and start the containers in a detached state:
-
 ```
-docker-compose up -d --build
+docker-compose up
 ```
 
-You should then be able to access the Graphite webapp at http://localhost:8080.
+You should then be able to access the Graphite webapp at [http://localhost:8080](http://localhost:8080).
 
 ## Example
 
@@ -24,11 +27,11 @@ These should appear in the Graphite UI:
 
 ![Screenshot](screenshot.png)
 
-You can verify that they are sharded across the two carbon cache nodes by examining the whisper files on each container:
+You can verify that they've been sharded across the two carbon cache nodes by examining the whisper files on each container:
 
 ```bash
 docker-compose exec cache_1 tree -r /opt/graphite/storage/whisper/stats/counters/characters
-/opt/graphite/storage/whisper/stats/counters/characters
+# /opt/graphite/storage/whisper/stats/counters/characters
 # |-- maggie
 # |   `-- count.wsp
 # |-- lisa
