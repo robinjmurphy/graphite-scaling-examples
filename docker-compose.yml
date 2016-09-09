@@ -1,4 +1,12 @@
-cache:
-  build: ./graphite/cache
-  ports:
-    - 8080:8080
+version: '2'
+services:
+  cache:
+    build: ./graphite/cache
+    ports:
+      - 8080:8080
+  statsd:
+    build: ./statsd
+    ports:
+      - 8125:8125/udp
+    links:
+      - cache:graphite
