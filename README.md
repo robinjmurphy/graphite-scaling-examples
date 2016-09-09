@@ -2,6 +2,8 @@
 
 This project is an example of scaling [Graphite](https://github.com/graphite-project/) with a single carbon relay node and two carbon cache nodes using [Docker Compose](https://docs.docker.com/compose/).
 
+![Diagram](diagram.png)
+
 * The carbon relay node receives metrics from StatsD and, using Graphite's `consistent-hashing` method, shards metrics between the two backend cache nodes
 * The carbon cache nodes operate independently and persist metrics in Whisper files
 
