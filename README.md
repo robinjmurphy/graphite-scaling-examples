@@ -26,7 +26,7 @@ These should appear in the Graphite UI:
 
 You can verify that they are sharded across the two carbon cache nodes by examining the whisper files on each container:
 
-```
+```bash
 docker-compose exec cache_1 tree -r /opt/graphite/storage/whisper/stats/counters/characters
 /opt/graphite/storage/whisper/stats/counters/characters
 # |-- maggie
@@ -43,7 +43,7 @@ docker-compose exec cache_1 tree -r /opt/graphite/storage/whisper/stats/counters
 # 4 directories, 6 files
 ```
 
-```
+```bash
 docker-compose exec cache_2 tree -r /opt/graphite/storage/whisper/stats/counters/characters
 # /opt/graphite/storage/whisper/stats/counters/characters
 # |-- marge
