@@ -1,2 +1,4 @@
 cache:
   build: ./graphite/cache
+  ports:
+    - 8080:8080

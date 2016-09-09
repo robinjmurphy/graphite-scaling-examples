@@ -10,10 +10,13 @@ RUN yum install -y python-pip
 RUN yum install -y python-devel
 RUN yum install -y systemd
 RUN yum install -y supervisor
+RUN yum install -y libffi-devel
+RUN yum install -y cairo
 
 # Python dependencies
 RUN pip install --upgrade pip
-RUN pip install whisper
+RUN pip install -r https://raw.githubusercontent.com/graphite-project/carbon/0.9.15/requirements.txt
+RUN pip install -r https://raw.githubusercontent.com/graphite-project/graphite-web/0.9.15/requirements.txt
 RUN pip install carbon
 RUN pip install graphite-web
 
@@ -29,16 +32,22 @@ ADD ./src/opt/graphite/conf/carbon.conf /opt/graphite/conf/carbon.conf
 ADD ./src/opt/graphite/conf/storage-schemas.conf /opt/graphite/conf/storage-schemas.conf
 ADD ./src/opt/graphite/conf/storage-aggregation.conf /opt/graphite/conf/storage-aggregation.conf
 
+# Graphite web config
+ADD ./src/opt/graphite/webapp/graphite/local_settings.py /opt/graphite/webapp/graphite/local_settings.py
+
+# Setup DB
+RUN PYTHONPATH=/opt/graphite/webapp django-admin.py syncdb --settings=graphite.settings --noinput
+
 # Permissions
 RUN chown -R www-data:www-data /opt/graphite
 
-# Graphite web
+# Graphite web port
 EXPOSE 8080
 
-# Carbon line receiver
+# Carbon line receiver port
 EXPOSE 2003
 
-# Carbon pickle receiver
+# Carbon pickle receiver port
 EXPOSE 2004
 
 # Carbon query port
