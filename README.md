@@ -17,10 +17,11 @@ make
 You can then `cd` into one of the example directories and run:
 
 ```
+cd examples/multiple-cache-nodes
 docker-compose up
 ```
 
-The examples all expose a StatsD server on the same local port (8125), so you'll need to stop any running containers when moving from one example to another:
+The examples all expose a StatsD server and Graphite Web application on the same local ports (8125 and 8080 respectively), so you'll need to stop any running containers when moving from one example to another:
 
 ```
 docker-compose stop
@@ -32,7 +33,7 @@ You can use the [`stats.sh`](stats.sh) script to send some metrics to StatsD.
 sh stats.sh
 ```
 
-These should appear in the Graphite UI:
+These should appear in the Graphite UI at [http://127.0.0.1:8080](http://127.0.0.1:8080):
 
 ![Screenshot](screenshot.png)
 
