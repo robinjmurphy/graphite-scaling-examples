@@ -25,16 +25,9 @@ RUN pip install graphite-web
 RUN adduser www-data
 RUN usermod -a -G www-data www-data
 
-# Supervisord config
-ADD	./supervisord.conf /etc/supervisor/conf.d/supervisord.conf
-
 # Carbon config
-ADD ./carbon.conf /opt/graphite/conf/carbon.conf
 ADD ./storage-schemas.conf /opt/graphite/conf/storage-schemas.conf
 ADD ./storage-aggregation.conf /opt/graphite/conf/storage-aggregation.conf
-
-# Graphite web config
-ADD ./local_settings.py /opt/graphite/webapp/graphite/local_settings.py
 
 # Setup DB
 RUN PYTHONPATH=/opt/graphite/webapp django-admin.py syncdb --settings=graphite.settings --noinput

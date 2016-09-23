@@ -1,5 +1,5 @@
 build:
-	docker build images/graphite -t graphite
-	docker build images/statsd -t statsd
+	docker build common/graphite -t graphite-common
+	docker build common/statsd -t statsd-common
 
 .PHONY: build

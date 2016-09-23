@@ -1,27 +1,29 @@
 version: '2'
 services:
   cache_1:
-    build: ./graphite/cache
+    build: ./cache
     container_name: cache_1
     networks:
       - graphite
   cache_2:
-    build: ./graphite/cache
+    build: ./cache
     container_name: cache_2
     networks:
       - graphite
   relay:
-    build: ./graphite/relay
+    build: ./relay
     container_name: relay
     ports:
       - 8080:8080
     networks:
       - graphite
   statsd:
-    build: ./statsd
+    image: statsd-common
     container_name: statsd
     ports:
       - 8125:8125/udp
+    links:
+      - relay:graphite
     networks:
       - graphite
 networks:
