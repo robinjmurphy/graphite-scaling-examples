@@ -79,4 +79,5 @@ docker-compose exec cache_2 tree /opt/graphite/storage/whisper/stats/counters/ch
 
 ## Reading list
 
-* [Monitoring with Graphite](http://shop.oreilly.com/product/0636920035794.do) (_Chapter 8_)
+* [Monitoring with Graphite – Jason Dixon](http://shop.oreilly.com/product/0636920035794.do) (_Chapter 8_)
+* [The Architecture of Clustering Graphite – Jamie Alquiza](https://grey-boundary.io/the-architecture-of-clustering-graphite/)
