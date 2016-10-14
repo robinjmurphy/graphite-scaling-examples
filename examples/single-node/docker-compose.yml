@@ -1,25 +1,17 @@
 version: '2'
 services:
-  cache_1:
+  cache:
     build: ./cache
     networks:
       - graphite
-  cache_2:
-    build: ./cache
-    networks:
-      - graphite
-  relay:
-    build: ./relay
     ports:
       - 8080:8080
-    networks:
-      - graphite
   statsd:
     image: statsd-common
     ports:
       - 8125:8125/udp
     links:
-      - relay:graphite
+      - cache:graphite
     networks:
       - graphite
 networks:

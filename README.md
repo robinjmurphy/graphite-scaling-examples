@@ -6,6 +6,9 @@ The examples are all based on the configurations described in Chapter 8 of [Moni
 
 ## The examples
 
+* [`single-node`](examples/single-node)
+* [`simple-relay`](examples/simple-relay)
+* [`haproxy-multiple-relays`](examples/haproxy-multiple-relays)
 * [`multiple-cache-nodes`](examples/multiple-cache-nodes)
 
 ## Running the examples
@@ -41,7 +44,7 @@ These should appear in the Graphite UI at [http://127.0.0.1:8080](http://127.0.0
 
 ![Screenshot](screenshot.png)
 
-You can verify how they've been sharded by examining the whisper files on one of your carbon cache containers. The example shows how the metrics are sharded for the [`multiple-cache-nodes`](examples/multiple-cache-nodes) example, where two backend carbon cache nodes are used.
+You can verify how they've been sharded by examining the whisper files on one of your Carbon cache containers. The example shows how the metrics are sharded for the [`multiple-cache-nodes`](examples/multiple-cache-nodes) example, where two backend Carbon cache nodes are used.
 
 ```bash
 docker-compose exec cache_1 tree /opt/graphite/storage/whisper/stats/counters/characters
