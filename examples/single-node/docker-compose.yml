@@ -2,8 +2,6 @@ version: '2'
 services:
   cache:
     build: ./cache
-    networks:
-      - graphite
     ports:
       - 8080:8080
   statsd:
@@ -12,8 +10,3 @@ services:
       - 8125:8125/udp
     links:
       - cache:graphite
-    networks:
-      - graphite
-networks:
-  graphite:
-    driver: bridge
