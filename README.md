@@ -4,6 +4,10 @@ This project contains examples of scaling [Graphite](https://github.com/graphite
 
 The examples are all based on the configurations described in Chapter 8 of [Monitoring with Graphite](http://shop.oreilly.com/product/0636920035794.do), which is an excellent resource for learning about scaling Graphite.
 
+## The examples
+
+* [`multiple-cache-nodes`](examples/multiple-cache-nodes)
+
 ## Running the examples
 
 All of the examples use common Docker images for Graphite and StatsD. Before running any of the examples, you'll need to build these images locally.
@@ -69,10 +73,6 @@ docker-compose exec cache_2 tree /opt/graphite/storage/whisper/stats/counters/ch
 #
 # 3 directories, 4 files
 ```
-
-## The examples
-
-* [`multiple-cache-nodes`](examples/multiple-cache-nodes)
 
 ## Reading list
 
