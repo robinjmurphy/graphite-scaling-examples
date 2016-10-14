@@ -1,0 +1,12 @@
+version: '2'
+services:
+  relay:
+    build: ./relay
+    ports:
+      - 8080:8080
+  statsd:
+    image: statsd-common
+    ports:
+      - 8125:8125/udp
+    links:
+      - relay:graphite

@@ -7,7 +7,7 @@ The examples are all based on the configurations described in Chapter 8 of [Moni
 ## The examples
 
 * [`single-node`](examples/single-node)
-* [`simple-relay`](examples/simple-relay)
+* [`single-relay`](examples/single-relay)
 * [`haproxy-multiple-relays`](examples/haproxy-multiple-relays)
 * [`multiple-cache-nodes`](examples/multiple-cache-nodes)
 
